@@ -6,7 +6,7 @@ These are all very outdated, wrote these several years ago. There are probably m
 import xlwings as xw
 import pandas as pd
 import sys
-import custom_pandas as cpd
+import analytics_packages.custom_pandas as cpd
 
 def get_ws(wb, sheet = 'Sheet1'):
 

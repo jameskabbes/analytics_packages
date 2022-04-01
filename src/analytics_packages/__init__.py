@@ -1,2 +1,2 @@
-import custom_pandas
-import custom_xlwings
+from . import custom_pandas
+from . import custom_xlwings
