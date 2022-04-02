@@ -10,6 +10,7 @@ import numpy as np
 import datetime
 import sys
 from dateutil.relativedelta import relativedelta
+import time
 
 def get_df(file_name, **params):
     '''Read csv file from local directory: return dataframe'''
@@ -82,28 +83,6 @@ def and_gate_many_cols(df, columns, col_name):
     return df
 
 
-def combine_all_string_columns(df, columns, new_column):
-
-    '''combines all columns contained in list found in df and renames it new column'''
-    col1 = columns[0]
-    col2 = columns[1]
-    cols_added = []
-    for i in range(len(columns) - 2):
-
-        join = 'join' + str(i)
-        cols_added.append(join)
-        df = combine_string_columns(df, col1, col2, join)
-
-        col1 = join
-        col2 = columns[2 + i]
-
-
-    #last join
-    df = combine_string_columns(df, col1, col2, new_column)
-    #print (df)
-    df = drop_these_cols(df, cols_added)
-    #print (df)
-    return df
 
 def new_df_with_value_in_col(df, col, val, opposite = False):
 
@@ -202,28 +181,12 @@ def split_by_time_filter(df, how = 'hours', new_poss_values = []):
     return dfs
 
 
-def filter_df_by_dates(df, date_col_dt, lower_datetime = None, upper_datetime = None, low_inc = True, up_inc = False):
+def filter_df_by_dates(df, date_col_dt, lower_datetime, upper_datetime, low_inc = True, up_inc = False):
 
     '''takes in a pandas df and returns one being filtered by lower and upper dates'''
 
     low = df.loc[df.index[0], date_col_dt ]
     high = df.loc[df.index[-1], date_col_dt ]
-
-    if lower_datetime == None:
-        print ('Enter info for lower datetime')
-        lower_datetime = get_datetime_input()
-
-        #if it goes below the bound
-        if lower_datetime < low:
-            lower_datetime = low
-
-    if upper_datetime == None:
-        print ('Enter info for upper datetime')
-        upper_datetime = get_datetime_input()
-
-        #if it goes above the bound
-        if upper_datetime > high:
-            upper_datetime = high
 
     if upper_datetime < lower_datetime:
         upper_datetime, lower_datetime = lower_datetime, upper_datetime
@@ -435,26 +398,9 @@ def grab_rows_with_certain_values(df, column, values, return_not_in_values = Fal
 
     return df
 
-def violin_plot(df, column, filter_column = None, min_val = None, max_val = None, mult = 1, add = 0):
-
-    '''Displays a violin plot of the values found in "column" filtered by optional param "filter_column"'''
-
-    if min_val != None:
-        df = floor_filter(df, min_val, column)
-    if max_val != None:
-        df = ceiling_filter(df, max_val, column)
-
-    df[column] = df[column] * mult
-    df[column] = df[column] + add
-    if filter_column != None:
-        a = sns.violinplot(x = df[filter_column], y = df[column], inner = 'quartiles')
-    else:
-        a = sns.violinplot(y = df[column], inner = 'quartiles')
-    plt.show()
 
 def get_unique_values(df, col):
     return df[col].unique()
-
 
 
 def dict_to_df(dictionary):
