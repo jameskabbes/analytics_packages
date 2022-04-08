@@ -1,6 +1,8 @@
 import sys
 sys_args = sys.argv[1:]
 
-from analytics_packages.analytics_packages import run
+def run( *sys_args ):
+    print ('Running main for analytics_packages')
+
 run( *sys_args )
 
