@@ -5,8 +5,9 @@ These are all very outdated, wrote these several years ago. There are probably m
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import collections
 import numpy as np
+
+import collections
 import datetime
 import sys
 from dateutil.relativedelta import relativedelta
