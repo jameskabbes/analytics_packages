@@ -1,8 +1,5 @@
-import sys
-sys_args = sys.argv[1:]
+import analytics_packages.custom_xlwings as cxw
+print ( cxw.alpha_from_index( 1345 ) )
 
-def run( *sys_args ):
-    print ('Running main for analytics_packages')
-
-run( *sys_args )
-
+import analytics_packages.custom_pandas as cpd
+print ( cpd.get_date_and_time() )
