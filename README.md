@@ -1,8 +1,8 @@
-[GitHub Pages](https://jameskabbes.github.io/analytics_packages)<br>
-[PyPI](https://pypi.org/project/kabbes-analytics-packages)
-
 # analytics_packages
 Helper functions for generic analysis and iteracting with Excel files
+
+[Documentation](https://jameskabbes.github.io/analytics_packages)<br>
+[PyPI](https://pypi.org/project/kabbes-analytics-packages)
 
 <br> 
 
