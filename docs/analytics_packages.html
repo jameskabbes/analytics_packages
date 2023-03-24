@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>analytics_packages package &mdash; kabbes_analytics_packages 0.5.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            kabbes_analytics_packages
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">analytics_packages package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-analytics_packages.custom_pandas">analytics_packages.custom_pandas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.add_to_bottom"><code class="docutils literal notranslate"><span class="pre">add_to_bottom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.and_gate_many_cols"><code class="docutils literal notranslate"><span class="pre">and_gate_many_cols()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.append_to_df_with_df"><code class="docutils literal notranslate"><span class="pre">append_to_df_with_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.boxplot"><code class="docutils literal notranslate"><span class="pre">boxplot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.ceiling_filter"><code class="docutils literal notranslate"><span class="pre">ceiling_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.check_column_in_list"><code class="docutils literal notranslate"><span class="pre">check_column_in_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.df_change_row_ind_col_value"><code class="docutils literal notranslate"><span class="pre">df_change_row_ind_col_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.df_datetime_to_time_cols"><code class="docutils literal notranslate"><span class="pre">df_datetime_to_time_cols()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.df_replace"><code class="docutils literal notranslate"><span class="pre">df_replace()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.dict_from_two_columns"><code class="docutils literal notranslate"><span class="pre">dict_from_two_columns()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.dict_to_df"><code class="docutils literal notranslate"><span class="pre">dict_to_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.drop_these_cols"><code class="docutils literal notranslate"><span class="pre">drop_these_cols()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.drop_these_rows"><code class="docutils literal notranslate"><span class="pre">drop_these_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.fill_nans"><code class="docutils literal notranslate"><span class="pre">fill_nans()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.filter_df_by_dates"><code class="docutils literal notranslate"><span class="pre">filter_df_by_dates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.floor_filter"><code class="docutils literal notranslate"><span class="pre">floor_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.get_date_and_time"><code class="docutils literal notranslate"><span class="pre">get_date_and_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.get_df"><code class="docutils literal notranslate"><span class="pre">get_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.get_unique_values"><code class="docutils literal notranslate"><span class="pre">get_unique_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.grab_rows_with_certain_values"><code class="docutils literal notranslate"><span class="pre">grab_rows_with_certain_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.histogram"><code class="docutils literal notranslate"><span class="pre">histogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.keep_these_cols"><code class="docutils literal notranslate"><span class="pre">keep_these_cols()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.keep_these_rows"><code class="docutils literal notranslate"><span class="pre">keep_these_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.map_df_col_to_new_id"><code class="docutils literal notranslate"><span class="pre">map_df_col_to_new_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.map_df_column_to_dict"><code class="docutils literal notranslate"><span class="pre">map_df_column_to_dict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.move_last_column_to_first"><code class="docutils literal notranslate"><span class="pre">move_last_column_to_first()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.multiple_filters"><code class="docutils literal notranslate"><span class="pre">multiple_filters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.new_df_with_value_in_col"><code class="docutils literal notranslate"><span class="pre">new_df_with_value_in_col()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.prep_datetime"><code class="docutils literal notranslate"><span class="pre">prep_datetime()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.rename_cols"><code class="docutils literal notranslate"><span class="pre">rename_cols()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.replace_in_df"><code class="docutils literal notranslate"><span class="pre">replace_in_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.sort_df"><code class="docutils literal notranslate"><span class="pre">sort_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.split_by_time_filter"><code class="docutils literal notranslate"><span class="pre">split_by_time_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.split_df_into_equal_time"><code class="docutils literal notranslate"><span class="pre">split_df_into_equal_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.value_counts_df"><code class="docutils literal notranslate"><span class="pre">value_counts_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_pandas.value_counts_in_df"><code class="docutils literal notranslate"><span class="pre">value_counts_in_df()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-analytics_packages.custom_xlwings">analytics_packages.custom_xlwings module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.add_sheet"><code class="docutils literal notranslate"><span class="pre">add_sheet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.alpha_from_column_names"><code class="docutils literal notranslate"><span class="pre">alpha_from_column_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.alpha_from_index"><code class="docutils literal notranslate"><span class="pre">alpha_from_index()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.alphas_from_index_list"><code class="docutils literal notranslate"><span class="pre">alphas_from_index_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.change_cell_color"><code class="docutils literal notranslate"><span class="pre">change_cell_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.clear_all"><code class="docutils literal notranslate"><span class="pre">clear_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.column_index_from_alphas"><code class="docutils literal notranslate"><span class="pre">column_index_from_alphas()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.combine_string_columns"><code class="docutils literal notranslate"><span class="pre">combine_string_columns()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.delete_sheet"><code class="docutils literal notranslate"><span class="pre">delete_sheet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.df_from_rows"><code class="docutils literal notranslate"><span class="pre">df_from_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.full_range"><code class="docutils literal notranslate"><span class="pre">full_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_book_sheets"><code class="docutils literal notranslate"><span class="pre">get_book_sheets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_book_sheets_names"><code class="docutils literal notranslate"><span class="pre">get_book_sheets_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_column"><code class="docutils literal notranslate"><span class="pre">get_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_column_headers_from_alpha"><code class="docutils literal notranslate"><span class="pre">get_column_headers_from_alpha()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_df_from_ws"><code class="docutils literal notranslate"><span class="pre">get_df_from_ws()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_rows"><code class="docutils literal notranslate"><span class="pre">get_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_wb"><code class="docutils literal notranslate"><span class="pre">get_wb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.get_ws"><code class="docutils literal notranslate"><span class="pre">get_ws()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.keep_these_rows"><code class="docutils literal notranslate"><span class="pre">keep_these_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.remove_slash_from_ws_name"><code class="docutils literal notranslate"><span class="pre">remove_slash_from_ws_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.row_to_col"><code class="docutils literal notranslate"><span class="pre">row_to_col()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.sort_ws"><code class="docutils literal notranslate"><span class="pre">sort_ws()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.write_2d"><code class="docutils literal notranslate"><span class="pre">write_2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.write_df_col_to_ws"><code class="docutils literal notranslate"><span class="pre">write_df_col_to_ws()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analytics_packages.custom_xlwings.write_df_to_ws"><code class="docutils literal notranslate"><span class="pre">write_df_to_ws()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-analytics_packages">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">kabbes_analytics_packages</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+      <li class="breadcrumb-item active">analytics_packages package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/analytics_packages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="analytics-packages-package">
+<h1>analytics_packages package<a class="headerlink" href="#analytics-packages-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-analytics_packages.custom_pandas">
+<span id="analytics-packages-custom-pandas-module"></span><h2>analytics_packages.custom_pandas module<a class="headerlink" href="#module-analytics_packages.custom_pandas" title="Permalink to this heading"></a></h2>
+<p>These are all very outdated, wrote these several years ago. There are probably much better ways to achieve what you need to
+-James</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.add_to_bottom">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">add_to_bottom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#add_to_bottom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.add_to_bottom" title="Permalink to this definition"></a></dt>
+<dd><p>Adds to bottom of dataframe based on ‘column_names’ and 2D list ‘values.’ See append_to_df_with_df for appending dfs</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.and_gate_many_cols">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">and_gate_many_cols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#and_gate_many_cols"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.and_gate_many_cols" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.append_to_df_with_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">append_to_df_with_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">og_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_ind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#append_to_df_with_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.append_to_df_with_df" title="Permalink to this definition"></a></dt>
+<dd><p>Appends ‘og_df’ with ‘new_df’ and returns new</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.boxplot">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">boxplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_with_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#boxplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.boxplot" title="Permalink to this definition"></a></dt>
+<dd><p>Shows a boxplot values found in ‘column_with_values’ with the option to group by another column</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.ceiling_filter">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">ceiling_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#ceiling_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.ceiling_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Returns df with values below ‘max_val’ found in ‘column’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.check_column_in_list">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">check_column_in_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_column</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#check_column_in_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.check_column_in_list" title="Permalink to this definition"></a></dt>
+<dd><p>returns a dataframe with a boolean value in new column if the row had one of those value or not</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.df_change_row_ind_col_value">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">df_change_row_ind_col_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#df_change_row_ind_col_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.df_change_row_ind_col_value" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.df_datetime_to_time_cols">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">df_datetime_to_time_cols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#df_datetime_to_time_cols"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.df_datetime_to_time_cols" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.df_replace">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">df_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_to_change</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_fill</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#df_replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.df_replace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.dict_from_two_columns">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">dict_from_two_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#dict_from_two_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.dict_from_two_columns" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.dict_to_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">dict_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#dict_to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.dict_to_df" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dataframe from ‘dictionary’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.drop_these_cols">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">drop_these_cols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#drop_these_cols"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.drop_these_cols" title="Permalink to this definition"></a></dt>
+<dd><p>Returns dataframe without columns ‘cols’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.drop_these_rows">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">drop_these_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#drop_these_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.drop_these_rows" title="Permalink to this definition"></a></dt>
+<dd><p>Returns dataframe without ‘rows’ based on index value</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.fill_nans">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">fill_nans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_to_fill</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#fill_nans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.fill_nans" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.filter_df_by_dates">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">filter_df_by_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_col_dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_datetime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_inc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">up_inc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#filter_df_by_dates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.filter_df_by_dates" title="Permalink to this definition"></a></dt>
+<dd><p>takes in a pandas df and returns one being filtered by lower and upper dates</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.floor_filter">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">floor_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#floor_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.floor_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Returns df with values above ‘min_val’ found in ‘column’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.get_date_and_time">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">get_date_and_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#get_date_and_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.get_date_and_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.get_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">get_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#get_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.get_df" title="Permalink to this definition"></a></dt>
+<dd><p>Read csv file from local directory: return dataframe</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.get_unique_values">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">get_unique_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#get_unique_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.get_unique_values" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.grab_rows_with_certain_values">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">grab_rows_with_certain_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_not_in_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#grab_rows_with_certain_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.grab_rows_with_certain_values" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a version of the dataframe where every row in “column” contains a value found in list”values”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.histogram">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">two_dim_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_axis_titles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axesfont</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">26</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">titlesize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.histogram" title="Permalink to this definition"></a></dt>
+<dd><p>Prints a histogram: two_dim_list variable should contain n-number (number of differnt colored series to plot) of lists of numerical values l-length long.
+x_axis_titles is a list of strings l-length long
+legend labels is a list of strings to the number of lists contained in two_dim_list
+ex: two_dim_list = [ [.1, .4, .3, .2], [.2, .4, .3, .1], [.2, .3, .3, .2] ], x_axis_titles = [‘Pepperoni’,’Sausage’,’Cheese’,’Vegetable’], legend_labels = [‘under 20 years old’,’20-50’,’50+’]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.keep_these_cols">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">keep_these_cols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#keep_these_cols"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.keep_these_cols" title="Permalink to this definition"></a></dt>
+<dd><p>Returns dataframe with columns ‘cols’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.keep_these_rows">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">keep_these_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#keep_these_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.keep_these_rows" title="Permalink to this definition"></a></dt>
+<dd><p>Returns dataframe with index values contained in ‘rows’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.map_df_col_to_new_id">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">map_df_col_to_new_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_col_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#map_df_col_to_new_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.map_df_col_to_new_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.map_df_column_to_dict">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">map_df_column_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#map_df_column_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.map_df_column_to_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.move_last_column_to_first">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">move_last_column_to_first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#move_last_column_to_first"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.move_last_column_to_first" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.multiple_filters">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">multiple_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_dim_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#multiple_filters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.multiple_filters" title="Permalink to this definition"></a></dt>
+<dd><p>columns = [‘Age’,’Name’]
+two_dim_list = [ [21, 25], [‘James’,’Michael’] ]</p>
+<p>this function sends back the df with age values of 21 and 25 and name values of james and michael</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.new_df_with_value_in_col">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">new_df_with_value_in_col</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opposite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#new_df_with_value_in_col"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.new_df_with_value_in_col" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.prep_datetime">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">prep_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d</span> <span class="pre">%H:%M:%S'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#prep_datetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.prep_datetime" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.rename_cols">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">rename_cols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#rename_cols"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.rename_cols" title="Permalink to this definition"></a></dt>
+<dd><p>renames cols found in ‘existing’ to match those found in “new”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.replace_in_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">replace_in_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_find</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_replace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#replace_in_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.replace_in_df" title="Permalink to this definition"></a></dt>
+<dd><p>Replaces list or string “to_find” with list or string “to_replace”
+Looks up all instances in “column” found in the dataframe and replaces them
+Returns dataframe</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.sort_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">sort_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ascend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#sort_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.sort_df" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.split_by_time_filter">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">split_by_time_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hours'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_poss_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#split_by_time_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.split_by_time_filter" title="Permalink to this definition"></a></dt>
+<dd><p>returns dfs which have been sifted based on hours/days/months etc
+refer to params.py -&gt; time_splits for reference</p>
+<p>df1                      df2
+customer     hour        customer     hour
+0            0           0            1
+1            0           1            1
+2            0           2            1</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.split_df_into_equal_time">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">split_df_into_equal_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_chunk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datetime_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'seconds'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#split_df_into_equal_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.split_df_into_equal_time" title="Permalink to this definition"></a></dt>
+<dd><p>returns dfs after being split into separate dfs by a time separator
+example: starting from time 0, separate into chunks of 3 weeks at a time</p>
+<p>ISOTIME</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.value_counts_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">value_counts_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#value_counts_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.value_counts_df" title="Permalink to this definition"></a></dt>
+<dd><p>This function outputs a dataframe with counts of the unique values for each column from the input dataframe (function argument).
+The counts are given for each column of the input dataframe - in the output a column with
+unique values is paired with another column with the counts for the unique values</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_pandas.value_counts_in_df">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_pandas.</span></span><span class="sig-name descname"><span class="pre">value_counts_in_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_pandas.html#value_counts_in_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_pandas.value_counts_in_df" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-analytics_packages.custom_xlwings">
+<span id="analytics-packages-custom-xlwings-module"></span><h2>analytics_packages.custom_xlwings module<a class="headerlink" href="#module-analytics_packages.custom_xlwings" title="Permalink to this heading"></a></h2>
+<p>These are all very outdated, wrote these several years ago. There are probably much better ways to achieve what you need to
+-James</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.add_sheet">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">add_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_book</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#add_sheet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.add_sheet" title="Permalink to this definition"></a></dt>
+<dd><p>adds sheet to workbook</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.alpha_from_column_names">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">alpha_from_column_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strings</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#alpha_from_column_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.alpha_from_column_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.alpha_from_index">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">alpha_from_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">integer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#alpha_from_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.alpha_from_index" title="Permalink to this definition"></a></dt>
+<dd><p>Takes a 0-based index (integer) and returns the corresponding column header</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.alphas_from_index_list">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">alphas_from_index_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ints</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#alphas_from_index_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.alphas_from_index_list" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.change_cell_color">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">change_cell_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_left_cell</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_right_cell</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#change_cell_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.change_cell_color" title="Permalink to this definition"></a></dt>
+<dd><p>changes a range of cells a certain color</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.clear_all">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">clear_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#clear_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.clear_all" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.column_index_from_alphas">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">column_index_from_alphas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#column_index_from_alphas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.column_index_from_alphas" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.combine_string_columns">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">combine_string_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_column</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#combine_string_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.combine_string_columns" title="Permalink to this definition"></a></dt>
+<dd><p>Returns df with new column that has a compiled string of col1 and col2</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.delete_sheet">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">delete_sheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#delete_sheet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.delete_sheet" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.df_from_rows">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">df_from_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#df_from_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.df_from_rows" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.full_range">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">full_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#full_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.full_range" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_book_sheets">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_book_sheets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_book_sheets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_book_sheets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_book_sheets_names">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_book_sheets_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_book_sheets_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_book_sheets_names" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_column">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_column" title="Permalink to this definition"></a></dt>
+<dd><p>gets a column from the ws</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_column_headers_from_alpha">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_column_headers_from_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_alphas</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_column_headers_from_alpha"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_column_headers_from_alpha" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_df_from_ws">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_df_from_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_df_from_ws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_df_from_ws" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_rows">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_left_cell</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottom_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_rows" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_wb">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_wb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">book_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_wb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_wb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.get_ws">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">get_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wb</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Sheet1'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#get_ws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.get_ws" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.keep_these_rows">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">keep_these_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#keep_these_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.keep_these_rows" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.remove_slash_from_ws_name">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">remove_slash_from_ws_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">char</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#remove_slash_from_ws_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.remove_slash_from_ws_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.row_to_col">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">row_to_col</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#row_to_col"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.row_to_col" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.sort_ws">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">sort_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_alphas</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#sort_ws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.sort_ws" title="Permalink to this definition"></a></dt>
+<dd><p>takes active ws and list of column alphas and sorts worksheet</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.write_2d">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">write_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_left_cell</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#write_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.write_2d" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.write_df_col_to_ws">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">write_df_col_to_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#write_df_col_to_ws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.write_df_col_to_ws" title="Permalink to this definition"></a></dt>
+<dd><p>writes a df column to a certain column number in the ws</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="analytics_packages.custom_xlwings.write_df_to_ws">
+<span class="sig-prename descclassname"><span class="pre">analytics_packages.custom_xlwings.</span></span><span class="sig-name descname"><span class="pre">write_df_to_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ws</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analytics_packages/custom_xlwings.html#write_df_to_ws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#analytics_packages.custom_xlwings.write_df_to_ws" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-analytics_packages">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-analytics_packages" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="src" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

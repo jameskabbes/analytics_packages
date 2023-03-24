@@ -1,0 +1,29 @@
+analytics\_packages package
+===========================
+
+Submodules
+----------
+
+analytics\_packages.custom\_pandas module
+-----------------------------------------
+
+.. automodule:: analytics_packages.custom_pandas
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+analytics\_packages.custom\_xlwings module
+------------------------------------------
+
+.. automodule:: analytics_packages.custom_xlwings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: analytics_packages
+   :members:
+   :undoc-members:
+   :show-inheritance:

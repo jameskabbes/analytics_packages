@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>analytics_packages.custom_xlwings &mdash; kabbes_analytics_packages 0.5.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            kabbes_analytics_packages
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">kabbes_analytics_packages</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">analytics_packages.custom_xlwings</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for analytics_packages.custom_xlwings</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">These are all very outdated, wrote these several years ago. There are probably much better ways to achieve what you need to</span>
+<span class="sd">-James</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">xlwings</span> <span class="k">as</span> <span class="nn">xw</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">analytics_packages.custom_pandas</span> <span class="k">as</span> <span class="nn">cpd</span>
+
+<div class="viewcode-block" id="get_ws"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_ws">[docs]</a><span class="k">def</span> <span class="nf">get_ws</span><span class="p">(</span><span class="n">wb</span><span class="p">,</span> <span class="n">sheet</span> <span class="o">=</span> <span class="s1">&#39;Sheet1&#39;</span><span class="p">):</span>
+
+    <span class="n">sheet</span> <span class="o">=</span> <span class="n">remove_slash_from_ws_name</span><span class="p">(</span><span class="n">sheet</span><span class="p">)</span>
+    <span class="n">sheet_names</span> <span class="o">=</span> <span class="n">get_book_sheets_names</span><span class="p">(</span> <span class="n">wb</span> <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sheet</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sheet_names</span><span class="p">:</span>
+        <span class="n">add_sheet</span><span class="p">(</span><span class="n">sheet</span><span class="p">,</span> <span class="n">wb</span><span class="p">)</span>
+
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="n">sheet</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ws</span></div>
+
+<div class="viewcode-block" id="get_wb"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_wb">[docs]</a><span class="k">def</span> <span class="nf">get_wb</span><span class="p">(</span><span class="n">book_name</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">xw</span><span class="o">.</span><span class="n">Book</span><span class="p">(</span><span class="n">book_name</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">wb</span> <span class="o">=</span> <span class="n">xw</span><span class="o">.</span><span class="n">Book</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">book_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wb</span></div>
+
+<div class="viewcode-block" id="get_book_sheets"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_book_sheets">[docs]</a><span class="k">def</span> <span class="nf">get_book_sheets</span><span class="p">(</span> <span class="n">wb</span> <span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheets</span></div>
+
+<div class="viewcode-block" id="get_book_sheets_names"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_book_sheets_names">[docs]</a><span class="k">def</span> <span class="nf">get_book_sheets_names</span><span class="p">(</span> <span class="n">wb</span> <span class="p">):</span>
+
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sheets</span> <span class="o">=</span> <span class="n">get_book_sheets</span><span class="p">(</span> <span class="n">wb</span> <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">sheet</span> <span class="ow">in</span> <span class="n">sheets</span><span class="p">:</span>
+        <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">sheet</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">names</span></div>
+
+<div class="viewcode-block" id="add_sheet"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.add_sheet">[docs]</a><span class="k">def</span> <span class="nf">add_sheet</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">work_book</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;adds sheet to workbook&#39;&#39;&#39;</span>
+
+    <span class="n">sheet_name</span> <span class="o">=</span> <span class="n">remove_slash_from_ws_name</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span>
+    <span class="n">work_book</span><span class="o">.</span><span class="n">sheets</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sheet_name</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="delete_sheet"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.delete_sheet">[docs]</a><span class="k">def</span> <span class="nf">delete_sheet</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ws</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="sort_ws"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.sort_ws">[docs]</a><span class="k">def</span> <span class="nf">sort_ws</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">column_alphas</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;takes active ws and list of column alphas and sorts worksheet&#39;&#39;&#39;</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_from_rows</span><span class="p">(</span> <span class="n">get_rows</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="n">get_column_headers_from_alpha</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column_alphas</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cpd</span><span class="o">.</span><span class="n">sort_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="c1">#print (headers)</span>
+    <span class="c1">#print (df)</span>
+    <span class="n">write_df_to_ws</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="write_df_to_ws"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.write_df_to_ws">[docs]</a><span class="k">def</span> <span class="nf">write_df_to_ws</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+
+    <span class="n">header</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span> <span class="n">header</span> <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">)</span>
+
+    <span class="n">write_2d</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_df_from_ws"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_df_from_ws">[docs]</a><span class="k">def</span> <span class="nf">get_df_from_ws</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df_from_rows</span><span class="p">(</span> <span class="n">get_rows</span><span class="p">(</span><span class="n">ws</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="df_from_rows"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.df_from_rows">[docs]</a><span class="k">def</span> <span class="nf">df_from_rows</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="get_rows"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_rows">[docs]</a><span class="k">def</span> <span class="nf">get_rows</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">top_left_cell</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">bottom_right</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">bottom_right</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bottom_right</span> <span class="o">=</span> <span class="p">(</span><span class="n">full_range</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span><span class="o">.</span><span class="n">last_cell</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">full_range</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span><span class="o">.</span><span class="n">last_cell</span><span class="o">.</span><span class="n">column</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">range</span><span class="p">(</span> <span class="n">top_left_cell</span><span class="p">,</span> <span class="n">bottom_right</span> <span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">return</span> <span class="n">rows</span></div>
+
+<div class="viewcode-block" id="write_2d"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.write_2d">[docs]</a><span class="k">def</span> <span class="nf">write_2d</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">top_left_cell</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)):</span>
+
+    <span class="n">ws</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">top_left_cell</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">rows</span></div>
+
+<div class="viewcode-block" id="remove_slash_from_ws_name"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.remove_slash_from_ws_name">[docs]</a><span class="k">def</span> <span class="nf">remove_slash_from_ws_name</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">char</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">replace</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">char</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="full_range"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.full_range">[docs]</a><span class="k">def</span> <span class="nf">full_range</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="s1">&#39;A1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rng</span></div>
+
+<div class="viewcode-block" id="row_to_col"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.row_to_col">[docs]</a><span class="k">def</span> <span class="nf">row_to_col</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">row</span>
+
+    <span class="n">col</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">col</span></div>
+
+<div class="viewcode-block" id="keep_these_rows"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.keep_these_rows">[docs]</a><span class="k">def</span> <span class="nf">keep_these_rows</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">locs</span><span class="p">):</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">(</span><span class="n">locs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="get_column"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_column">[docs]</a><span class="k">def</span> <span class="nf">get_column</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">col_index</span><span class="p">,</span> <span class="n">nested</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;gets a column from the ws&#39;&#39;&#39;</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">nested</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">get_rows</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+            <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">([</span> <span class="n">row</span><span class="p">[</span><span class="n">col_index</span><span class="p">]</span> <span class="p">]</span> <span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">get_rows</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+            <span class="n">col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">row</span><span class="p">[</span><span class="n">col_index</span><span class="p">]</span> <span class="p">)</span>
+    <span class="k">return</span> <span class="n">col</span></div>
+
+<div class="viewcode-block" id="write_df_col_to_ws"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.write_df_col_to_ws">[docs]</a><span class="k">def</span> <span class="nf">write_df_col_to_ws</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">col_index</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;writes a df column to a certain column number in the ws&#39;&#39;&#39;</span>
+
+    <span class="n">values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">values</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">col_name</span><span class="p">)</span>
+    <span class="c1">#print (values)</span>
+    <span class="n">values_col</span> <span class="o">=</span> <span class="n">row_to_col</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="c1">#print (values_col)</span>
+
+    <span class="n">write_2d</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">values_col</span><span class="p">,</span> <span class="n">top_left_cell</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">col_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="clear_all"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.clear_all">[docs]</a><span class="k">def</span> <span class="nf">clear_all</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">get_rows</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="n">blank</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">None</span><span class="p">,</span> <span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    <span class="n">write_2d</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">blank</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="alpha_from_index"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.alpha_from_index">[docs]</a><span class="k">def</span> <span class="nf">alpha_from_index</span><span class="p">(</span><span class="n">integer</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Takes a 0-based index (integer) and returns the corresponding column header&#39;&#39;&#39;</span>
+
+    <span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+    <span class="n">contained_in_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">:</span>
+        <span class="n">contained_in_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">26</span> <span class="o">**</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="n">integer</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">integer_copy</span> <span class="o">=</span> <span class="n">integer</span>
+    <span class="n">num_digits</span> <span class="o">=</span> <span class="n">lengths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contained_in_lengths</span><span class="p">)):</span>
+        <span class="n">integer_copy</span> <span class="o">-=</span> <span class="n">contained_in_lengths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">integer_copy</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">num_digits</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">break</span>
+
+    <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,]</span> <span class="o">*</span> <span class="n">num_digits</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+
+    <span class="n">breakdown</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span> <span class="o">*</span> <span class="n">num_digits</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span> <span class="o">*</span> <span class="n">num_digits</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_digits</span><span class="p">):</span>
+
+        <span class="n">breakdown</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">integer</span> <span class="o">%</span> <span class="p">(</span><span class="n">contained_in_lengths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">breakdown</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">breakdown</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">contained_in_lengths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">integer</span> <span class="o">-=</span> <span class="n">breakdown</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">digits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">breakdown</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">26</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">digits</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">:</span>
+        <span class="n">string</span> <span class="o">+=</span> <span class="n">alpha</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">string</span></div>
+
+<div class="viewcode-block" id="alphas_from_index_list"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.alphas_from_index_list">[docs]</a><span class="k">def</span> <span class="nf">alphas_from_index_list</span><span class="p">(</span><span class="n">ints</span><span class="p">):</span>
+
+    <span class="n">final</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ints</span><span class="p">:</span>
+        <span class="n">final</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alpha_from_index</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">final</span></div>
+
+<div class="viewcode-block" id="column_index_from_alphas"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.column_index_from_alphas">[docs]</a><span class="k">def</span> <span class="nf">column_index_from_alphas</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+
+    <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+        <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">final</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)):</span>
+
+        <span class="n">new_mult</span> <span class="o">=</span> <span class="mi">26</span><span class="o">**</span><span class="n">i</span>
+        <span class="c1">#1, 26, 676</span>
+
+        <span class="n">place</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">index</span><span class="p">(</span> <span class="nb">list</span><span class="p">[</span><span class="n">place</span><span class="p">]</span> <span class="p">)</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">final</span> <span class="o">+=</span> <span class="p">(</span><span class="n">index</span> <span class="o">*</span> <span class="n">new_mult</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">final</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="get_column_headers_from_alpha"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.get_column_headers_from_alpha">[docs]</a><span class="k">def</span> <span class="nf">get_column_headers_from_alpha</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">list_of_alphas</span><span class="p">):</span>
+
+    <span class="n">inds</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list_of_alphas</span><span class="p">:</span>
+        <span class="n">inds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column_index_from_alphas</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+    <span class="n">df_headers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="c1">#print (cols)</span>
+    <span class="c1">#print (len(cols))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list_of_alphas</span><span class="p">)):</span>
+        <span class="n">df_headers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cols</span><span class="p">[</span> <span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">])</span>
+        <span class="c1">#print (inds[i])</span>
+
+    <span class="k">return</span> <span class="n">df_headers</span></div>
+
+
+
+<div class="viewcode-block" id="combine_string_columns"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.combine_string_columns">[docs]</a><span class="k">def</span> <span class="nf">combine_string_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">new_column</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Returns df with new column that has a compiled string of col1 and col2&#39;&#39;&#39;</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">new_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="alpha_from_column_names"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.alpha_from_column_names">[docs]</a><span class="k">def</span> <span class="nf">alpha_from_column_names</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">strings</span><span class="p">):</span>
+
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">alphas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">cols</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">alphas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">alpha_from_index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">alphas</span></div>
+
+<div class="viewcode-block" id="change_cell_color"><a class="viewcode-back" href="../../analytics_packages.html#analytics_packages.custom_xlwings.change_cell_color">[docs]</a><span class="k">def</span> <span class="nf">change_cell_color</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">top_left_cell</span><span class="p">,</span> <span class="n">cell_color</span><span class="p">,</span> <span class="n">bottom_right_cell</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;changes a range of cells a certain color&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">bottom_right_cell</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bottom_right_cell</span> <span class="o">=</span> <span class="n">top_left_cell</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">top_left_cell</span><span class="p">,</span> <span class="n">bottom_right_cell</span><span class="p">)</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">cell_color</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, James Kabbes.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
